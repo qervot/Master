@@ -20,7 +20,8 @@ public class GameWindow extends JFrame {
         });
     }
 
-    private Sprite[] sprites = new Sprite[10];
+    private final int INITIAL_BALLS_COUNT = 10;
+    private final List<Sprite> sprites = new ArrayList<>();
 
     private GameWindow() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -31,12 +32,18 @@ public class GameWindow extends JFrame {
         GameCanvas gameCanvas = new GameCanvas(this);
         add(gameCanvas);
         initGame();
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                sprites.add(new Ball());
+            }
+        });
         setVisible(true);
     }
 
     private void initGame(){
-        for (int i = 0; i < sprites.length; i++) {
-            sprites[i] = new Ball();
+        for (int i = 0; i < INITIAL_BALLS_COUNT; i++) {
+            sprites.add(new Ball());
         }
     }
 
