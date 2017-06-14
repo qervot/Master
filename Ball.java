@@ -18,21 +18,32 @@ class Ball extends Sprite {
     void update(GameCanvas gameCanvas, float deltaTime) {
         x += vx * deltaTime;// x = x0 + v * t
         y += vy * deltaTime;
+        
+        boolean mirrored = false;
+        
         if(getLeft() < gameCanvas.getLeft()){
             setLeft(gameCanvas.getLeft());
             vx = -vx;
+            mirrored = true;
         }
         if(getRight() > gameCanvas.getRight()){
             setRight(gameCanvas.getRight());
             vx = -vx;
+            mirrored = true;
         }
         if(getTop() < gameCanvas.getTop()){
             setTop(gameCanvas.getTop());
             vy = -vy;
+            mirrored = true;
         }
         if(getBottom() > gameCanvas.getBottom()){
             setBottom(gameCanvas.getBottom());
             vy = -vy;
+            mirrored = true;
+        }
+
+        if (mirrored) {
+            color = new Color((int)(Math.random() * 256f), (int)(Math.random() * 256f), (int)(Math.random() * 256f));
         }
     }
 
