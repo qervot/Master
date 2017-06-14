@@ -13,6 +13,18 @@ class Ball extends Sprite {
         halfHeight = 20f + (float)(Math.random() * 50f);
         halfWidth = halfHeight;
     }
+    
+    Ball(int x, int y) {
+        this();
+        this.x = x;
+        this.y = y;
+
+        // Speed from -250 to -150 or from 150 to 250
+        vx = (float)((Math.random() - 0.5) * 200f);
+        vx += Math.signum(vx) * 150;
+        vy = (float)((Math.random() - 0.5) * 200f);
+        vy += Math.signum(vy) * 150;
+    }
 
     @Override
     void update(GameCanvas gameCanvas, float deltaTime) {
