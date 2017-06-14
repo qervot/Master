@@ -35,7 +35,7 @@ public class GameWindow extends JFrame {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                sprites.add(new Ball());
+                sprites.add(new Ball(e.getX(), e.getY()));
             }
         });
         setVisible(true);
